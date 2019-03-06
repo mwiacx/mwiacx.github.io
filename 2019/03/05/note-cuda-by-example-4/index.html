@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码  4.2 CUDA并行编程本节描述基本的CUDA并行编程知识。 4.2.1 矢量求和问题：c[10] = a[10] + b[10] CPU 矢量求和：代码略 10次加法，假设有2个核，Core 0执行奇">
+<meta name="description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码">
 <meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-4">
 <meta property="og:url" content="http://code.mwiacx.com/2019/03/05/note-cuda-by-example-4/index.html">
 <meta property="og:site_name" content="QiuQiDongLuo">
-<meta property="og:description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码  4.2 CUDA并行编程本节描述基本的CUDA并行编程知识。 4.2.1 矢量求和问题：c[10] = a[10] + b[10] CPU 矢量求和：代码略 10次加法，假设有2个核，Core 0执行奇">
+<meta property="og:description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T05:20:48.031Z">
+<meta property="og:updated_time" content="2019-03-06T05:22:52.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-4">
-<meta name="twitter:description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码  4.2 CUDA并行编程本节描述基本的CUDA并行编程知识。 4.2.1 矢量求和问题：c[10] = a[10] + b[10] CPU 矢量求和：代码略 10次加法，假设有2个核，Core 0执行奇">
+<meta name="twitter:description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码">
 
 
 
@@ -305,6 +305,7 @@
 <li>学习CUDA暴露（expose）其并行性的一种基础的方式</li>
 <li>编写第一份CUDA C并行代码</li>
 </ul>
+<a id="more"></a>
 <h3 id="4-2-CUDA并行编程"><a href="#4-2-CUDA并行编程" class="headerlink" title="4.2 CUDA并行编程"></a>4.2 CUDA并行编程</h3><p>本节描述基本的CUDA并行编程知识。</p>
 <h4 id="4-2-1-矢量求和"><a href="#4-2-1-矢量求和" class="headerlink" title="4.2.1 矢量求和"></a>4.2.1 矢量求和</h4><p>问题：<code>c[10] = a[10] + b[10]</code></p>
 <p>CPU 矢量求和：代码略</p>
