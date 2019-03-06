@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制  5.2 拆分并行块上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。 之前我们只更改了&amp;lt;&amp;lt;&amp;lt;&amp;gt">
+<meta name="description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
 <meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-5">
 <meta property="og:url" content="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/index.html">
 <meta property="og:site_name" content="QiuQiDongLuo">
-<meta property="og:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制  5.2 拆分并行块上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。 之前我们只更改了&amp;lt;&amp;lt;&amp;lt;&amp;gt">
+<meta property="og:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T05:19:16.173Z">
+<meta property="og:updated_time" content="2019-03-06T05:24:43.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-5">
-<meta name="twitter:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制  5.2 拆分并行块上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。 之前我们只更改了&amp;lt;&amp;lt;&amp;lt;&amp;gt">
+<meta name="twitter:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
 
 
 
@@ -305,6 +305,7 @@
 <li>了解不同线程之间进行通信的机制</li>
 <li>了解不同线程并行运行的同步机制</li>
 </ul>
+<a id="more"></a>
 <h3 id="5-2-拆分并行块"><a href="#5-2-拆分并行块" class="headerlink" title="5.2 拆分并行块"></a>5.2 拆分并行块</h3><p>上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。</p>
 <p>之前我们只更改了&lt;&lt;&lt;&gt;&gt;&gt;中的前一个参数，后一个参数表示每个块包含的线程数，在之前的例子中，我们实际上发射了：</p>
 <script type="math/tex; mode=display">N\ blocks \times 1\ thread/block = N\ parallel\ threads ​</script><p>让我们重新审视我们的向量加法示例，介绍包含有关CUDA C功能的新信息。</p>
