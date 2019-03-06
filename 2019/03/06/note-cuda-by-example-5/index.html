@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="CUDA By Example阅读笔记-5第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta name="description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
 <meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-5">
 <meta property="og:url" content="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/index.html">
 <meta property="og:site_name" content="QiuQiDongLuo">
-<meta property="og:description" content="CUDA By Example阅读笔记-5第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta property="og:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-06T02:26:37.563Z">
+<meta property="og:updated_time" content="2019-03-06T02:40:39.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-5">
-<meta name="twitter:description" content="CUDA By Example阅读笔记-5第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta name="twitter:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
 
 
 
@@ -300,7 +300,7 @@
       
 
       
-        <h1 id="CUDA-By-Example阅读笔记-5"><a href="#CUDA-By-Example阅读笔记-5" class="headerlink" title="CUDA By Example阅读笔记-5"></a>CUDA By Example阅读笔记-5</h1><h2 id="第5章-线程协作（Thread-Cooperation）"><a href="#第5章-线程协作（Thread-Cooperation）" class="headerlink" title="第5章 线程协作（Thread Cooperation）"></a>第5章 线程协作（Thread Cooperation）</h2><h3 id="5-1-本章内容"><a href="#5-1-本章内容" class="headerlink" title="5.1 本章内容"></a>5.1 本章内容</h3><ul>
+        <h2 id="第5章-线程协作（Thread-Cooperation）"><a href="#第5章-线程协作（Thread-Cooperation）" class="headerlink" title="第5章 线程协作（Thread Cooperation）"></a>第5章 线程协作（Thread Cooperation）</h2><h3 id="5-1-本章内容"><a href="#5-1-本章内容" class="headerlink" title="5.1 本章内容"></a>5.1 本章内容</h3><ul>
 <li>You will learn about what CUDA C calls threads???</li>
 <li>了解不同线程之间进行通信的机制</li>
 <li>了解不同线程并行运行的同步机制</li>
@@ -308,8 +308,7 @@
 <a id="more"></a>
 <h3 id="5-2-拆分并行块"><a href="#5-2-拆分并行块" class="headerlink" title="5.2 拆分并行块"></a>5.2 拆分并行块</h3><p>上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。</p>
 <p>之前我们只更改了&lt;&lt;&lt;&gt;&gt;&gt;中的前一个参数，后一个参数表示每个块包含的线程数，在之前的例子中，我们实际上发射了：</p>
-<p>$$ N\ blocks \times 1\ thread/block = N\ parallel\ threads $$</p>
-<p>让我们重新审视我们的向量加法示例，介绍包含有关CUDA C功能的新信息。</p>
+<script type="math/tex; mode=display">N\ blocks \times 1\ thread/block = N\ parallel\ threads</script><p>让我们重新审视我们的向量加法示例，介绍包含有关CUDA C功能的新信息。</p>
 <h4 id="5-2-1-向量加法：终极版"><a href="#5-2-1-向量加法：终极版" class="headerlink" title="5.2.1 向量加法：终极版"></a>5.2.1 向量加法：终极版</h4><p>问题与目标同前面，不同的是这次不使用block而是使用thread。使用并行线程有一些使用并行block得不到的好处，但现在还不是揭露他的时候。</p>
 <p>GPU VECTOR SUMS USING THREADS：代码略</p>
 <p>在下一节中，我们将看到只用线程的一个局限性，当然，我们也会知道为什么要将block拆分为threads。</p>
@@ -324,8 +323,7 @@
 <h3 id="5-3-共享内存和同步"><a href="#5-3-共享内存和同步" class="headerlink" title="5.3 共享内存和同步"></a>5.3 共享内存和同步</h3><p>到目前为止，将块拆成线程的动机只有降低硬件对于块的数量限制，这是非常弱的动机。更重要的一个因素是<strong>共享内存</strong>！在CUDA C中使用关键字<code>__shared__</code>可以使得变量驻留在共享内存中。与典型的共享内存不一样的是，<strong>CUDA C为每一个块创建共享内存变量的副本</strong>。块中的线程共享内存，但线程无法查看和修改其他块中此变量副本，<strong>通过这种方法，块中的线程可以在计算上进行通信和协作</strong>。此外，共享内存缓冲区实际上驻留在GPU上，而不是驻留在片外DRAM中。这样访问共享内存的延迟往往远低于典型缓冲区，使共享内存有效地作为每块，软件管理的缓存或暂存器。</p>
 <p>既然有通信机制，随之而来就是同步机制。</p>
 <h4 id="5-3-1-点积（内积）"><a href="#5-3-1-点积（内积）" class="headerlink" title="5.3.1 点积（内积）"></a>5.3.1 点积（内积）</h4><p>两个向量的内积公式定义如下：</p>
-<p>$$(x_1,x_2,x_3,x_4) \cdot (y_1, y_2, y_3, y_4) = x_1y_1 + x_2y_2 + x_3y_3 + x_4y_4$$</p>
-<p>代码从略。</p>
+<script type="math/tex; mode=display">(x_1,x_2,x_3,x_4) \cdot (y_1, y_2, y_3, y_4) = x_1y_1 + x_2y_2 + x_3y_3 + x_4y_4</script><p>代码从略。</p>
 <p>将一个变量声明成驻留共享内存的方式如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__shared__ <span class="keyword">float</span> cache[threadsPerBlock];</span><br></pre></td></tr></table></figure>
 <p>同步的方法：</p>
@@ -477,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CUDA-By-Example阅读笔记-5"><span class="nav-number">1.</span> <span class="nav-text">CUDA By Example阅读笔记-5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第5章-线程协作（Thread-Cooperation）"><span class="nav-number">1.1.</span> <span class="nav-text">第5章 线程协作（Thread Cooperation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-本章内容"><span class="nav-number">1.1.1.</span> <span class="nav-text">5.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-拆分并行块"><span class="nav-number">1.1.2.</span> <span class="nav-text">5.2 拆分并行块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-向量加法：终极版"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">5.2.1 向量加法：终极版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-GPU-RIPPLE-USING-THREADS"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">5.2.2 GPU RIPPLE USING THREADS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-共享内存和同步"><span class="nav-number">1.1.3.</span> <span class="nav-text">5.3 共享内存和同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-点积（内积）"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">5.3.1 点积（内积）</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第5章-线程协作（Thread-Cooperation）"><span class="nav-number">1.</span> <span class="nav-text">第5章 线程协作（Thread Cooperation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-拆分并行块"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 拆分并行块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-向量加法：终极版"><span class="nav-number">1.2.1.</span> <span class="nav-text">5.2.1 向量加法：终极版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-GPU-RIPPLE-USING-THREADS"><span class="nav-number">1.2.2.</span> <span class="nav-text">5.2.2 GPU RIPPLE USING THREADS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-共享内存和同步"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 共享内存和同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-点积（内积）"><span class="nav-number">1.3.1.</span> <span class="nav-text">5.3.1 点积（内积）</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
