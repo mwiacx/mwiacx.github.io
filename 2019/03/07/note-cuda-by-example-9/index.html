@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+  <meta name="description" content="第9章 原子性在某些情况下，当我们尝试在大规模并行体系结构上实现相同的算法时，单线程应用程序中非常简单的东西实际上会出现严重问题。在本章中，我们将介绍一些需要使用特殊原语的情况，以便安全地完成在传统的单线程应用程序中可能非常简单的事情。 9.1 本章内容 了解多个NVIDIA GPU的计算能力（compute capability） 了解什么是原子操作和为什么需要他们 了解如何在CUDA核函数中执">
 <meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-5">
-<meta property="og:url" content="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/index.html">
+<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-9">
+<meta property="og:url" content="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-9/index.html">
 <meta property="og:site_name" content="秋起冬落">
-<meta property="og:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta property="og:description" content="第9章 原子性在某些情况下，当我们尝试在大规模并行体系结构上实现相同的算法时，单线程应用程序中非常简单的东西实际上会出现严重问题。在本章中，我们将介绍一些需要使用特殊原语的情况，以便安全地完成在传统的单线程应用程序中可能非常简单的事情。 9.1 本章内容 了解多个NVIDIA GPU的计算能力（compute capability） 了解什么是原子操作和为什么需要他们 了解如何在CUDA核函数中执">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-03-06T05:24:43.339Z">
+<meta property="og:updated_time" content="2019-03-07T09:56:50.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-5">
-<meta name="twitter:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-9">
+<meta name="twitter:description" content="第9章 原子性在某些情况下，当我们尝试在大规模并行体系结构上实现相同的算法时，单线程应用程序中非常简单的东西实际上会出现严重问题。在本章中，我们将介绍一些需要使用特殊原语的情况，以便安全地完成在传统的单线程应用程序中可能非常简单的事情。 9.1 本章内容 了解多个NVIDIA GPU的计算能力（compute capability） 了解什么是原子操作和为什么需要他们 了解如何在CUDA核函数中执">
 
 
 
 
 
 
-  <link rel="canonical" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/">
+  <link rel="canonical" href="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-9/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>CUDA BY EXAMPLE阅读笔记-5 | 秋起冬落</title>
+  <title>CUDA BY EXAMPLE阅读笔记-9 | 秋起冬落</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Xun">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-5
+          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-9
 
               
             
@@ -358,7 +358,7 @@
                 
               
 
-              <time title="Created: 2019-03-06 10:07:00 / Modified: 13:24:43" itemprop="dateCreated datePublished" datetime="2019-03-06T10:07:00+08:00">2019-03-06</time>
+              <time title="Created: 2019-03-07 15:27:00 / Modified: 17:56:50" itemprop="dateCreated datePublished" datetime="2019-03-07T15:27:00+08:00">2019-03-07</time>
             
 
             
@@ -397,43 +397,39 @@
       
 
       
-        <h2 id="第5章-线程协作（Thread-Cooperation）"><a href="#第5章-线程协作（Thread-Cooperation）" class="headerlink" title="第5章 线程协作（Thread Cooperation）"></a>第5章 线程协作（Thread Cooperation）</h2><h3 id="5-1-本章内容"><a href="#5-1-本章内容" class="headerlink" title="5.1 本章内容"></a>5.1 本章内容</h3><ul>
-<li>You will learn about what CUDA C calls threads???</li>
-<li>了解不同线程之间进行通信的机制</li>
-<li>了解不同线程并行运行的同步机制</li>
+        <h2 id="第9章-原子性"><a href="#第9章-原子性" class="headerlink" title="第9章 原子性"></a>第9章 原子性</h2><p>在某些情况下，当我们尝试在大规模并行体系结构上实现相同的算法时，单线程应用程序中非常简单的东西实际上会出现严重问题。在本章中，我们将介绍一些需要使用特殊原语的情况，以便安全地完成在传统的单线程应用程序中可能非常简单的事情。</p>
+<h3 id="9-1-本章内容"><a href="#9-1-本章内容" class="headerlink" title="9.1 本章内容"></a>9.1 本章内容</h3><ul>
+<li>了解多个NVIDIA GPU的计算能力（compute capability）</li>
+<li>了解什么是原子操作和为什么需要他们</li>
+<li>了解如何在CUDA核函数中执行原子算术操作</li>
 </ul>
 <a id="more"></a>
-<h3 id="5-2-拆分并行块"><a href="#5-2-拆分并行块" class="headerlink" title="5.2 拆分并行块"></a>5.2 拆分并行块</h3><p>上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。</p>
-<p>之前我们只更改了&lt;&lt;&lt;&gt;&gt;&gt;中的前一个参数，后一个参数表示每个块包含的线程数，在之前的例子中，我们实际上发射了：</p>
-<script type="math/tex; mode=display">N\ blocks \times 1\ thread/block = N\ parallel\ threads ​</script><p>让我们重新审视我们的向量加法示例，介绍包含有关CUDA C功能的新信息。</p>
-<h4 id="5-2-1-向量加法：终极版"><a href="#5-2-1-向量加法：终极版" class="headerlink" title="5.2.1 向量加法：终极版"></a>5.2.1 向量加法：终极版</h4><p>问题与目标同前面，不同的是这次不使用block而是使用thread。使用并行线程有一些使用并行block得不到的好处，但现在还不是揭露他的时候。</p>
-<p>GPU VECTOR SUMS USING THREADS：代码略</p>
-<p>在下一节中，我们将看到只用线程的一个局限性，当然，我们也会知道为什么要将block拆分为threads。</p>
-<p>GPU SUMS OF A LONGER VECTOR：代码略</p>
-<p>与block数类似，每个块的线程数也有限制，其不能大于设备属性中maxThreadPerBlock字段指定的值。</p>
-<p>注意如何在多维结构中计算线性编号。分配块和每块线程数时需要注意ROUND UP。如果需要发射的线程数不是threadsPerBlocks的整数倍需要进行向上取整，这时候有可能多分配一些线程，需要保证这些线程不会进行多余的操作，这就是下面代码if语句存在的原因：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tid &lt; N)</span><br><span class="line">	c[tid] = b[tid] + a[tid];</span><br></pre></td></tr></table></figure>
-<p>GPU SUMS OF ARBITRARILY LONG VECTORS：代码略</p>
-<p>如何处理超大线程数面临的块数和块上线程数限制，方法：每个线程顺序处理多个数据，而非一个数据，这样就能把总线程数降下来。</p>
-<p>这样我们可以添加任意长度的向量，只受GPU上RAM大小的限制。</p>
-<h4 id="5-2-2-GPU-RIPPLE-USING-THREADS"><a href="#5-2-2-GPU-RIPPLE-USING-THREADS" class="headerlink" title="5.2.2 GPU RIPPLE USING THREADS"></a>5.2.2 GPU RIPPLE USING THREADS</h4><p>一个新的有趣的例子，略。<strong>重点内容是如何计算线性坐标！</strong></p>
-<h3 id="5-3-共享内存和同步"><a href="#5-3-共享内存和同步" class="headerlink" title="5.3 共享内存和同步"></a>5.3 共享内存和同步</h3><p>到目前为止，将块拆成线程的动机只有降低硬件对于块的数量限制，这是非常弱的动机。更重要的一个因素是<strong>共享内存</strong>！在CUDA C中使用关键字<code>__shared__</code>可以使得变量驻留在共享内存中。与典型的共享内存不一样的是，<strong>CUDA C为每一个块创建共享内存变量的副本</strong>。块中的线程共享内存，但线程无法查看和修改其他块中此变量副本，<strong>通过这种方法，块中的线程可以在计算上进行通信和协作</strong>。此外，共享内存缓冲区实际上驻留在GPU上，而不是驻留在片外DRAM中。这样访问共享内存的延迟往往远低于典型缓冲区，使共享内存有效地作为每块，软件管理的缓存或暂存器。</p>
-<p>既然有通信机制，随之而来就是同步机制。</p>
-<h4 id="5-3-1-点积（内积）"><a href="#5-3-1-点积（内积）" class="headerlink" title="5.3.1 点积（内积）"></a>5.3.1 点积（内积）</h4><p>两个向量的内积公式定义如下：</p>
-<script type="math/tex; mode=display">(x_1,x_2,x_3,x_4) \cdot (y_1, y_2, y_3, y_4) = x_1y_1 + x_2y_2 + x_3y_3 + x_4y_4</script><p>代码从略，<strong>请务必</strong>对照原书理解代码和并行编程方法。</p>
-<p>将一个变量声明成驻留共享内存的方式如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__shared__ <span class="keyword">float</span> cache[threadsPerBlock];</span><br></pre></td></tr></table></figure>
-<p>同步的方法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// synchronize threads in this block</span></span><br><span class="line">__syncthreads();</span><br></pre></td></tr></table></figure>
-<p>这个调用保证block上的每个线程都已经完成这个指令后，才会执行之后的指令。</p>
-<p><strong>归约（Reduction）</strong>：通常将获取一个输入数组并对其进行一些操作，最后产生一个小一些的数组的过程称作归约。</p>
-<p>核函数总的计算时间复杂度：$1+log_2(blockDim.x)+1$。</p>
-<p>在核函数中只计算了部分步骤的原因：Reduction类操作的最后阶段往往不能很好的利用GPU的并行计算优势，不如交给CPU计算。</p>
-<p>重要提醒：</p>
-<p><strong>如果将__syncthreads()写入了divergent branch，那么程序会造成死锁</strong></p>
-<h4 id="5-3-2-SHARED-MEMORY-BITMAP"><a href="#5-3-2-SHARED-MEMORY-BITMAP" class="headerlink" title="5.3.2 SHARED MEMORY BITMAP"></a>5.3.2 SHARED MEMORY BITMAP</h4><p>合适的使用<code>__syncthreads()</code>进行线程同步。</p>
-<h3 id="5-4-本章小结"><a href="#5-4-本章小结" class="headerlink" title="5.4 本章小结"></a>5.4 本章小结</h3><p>我们知道如何将块细分为更小的并行执行单元（称为线程）。我们重新讨论了前一章的向量加法示例，以了解如何执行任意长向量的添加。我们还展示了一个Reduction的例子，以及我们如何使用共享内存和同步来实现这一目标。事实上，这个例子展示了GPU和CPU如何协作计算结果。最后，我们展示了当我们忽略同步需求时它对应用程序的危险程度。</p>
-<p>您已经了解了CUDA C的大部分基础知识以及它类似于标准C的一些方法，以及它与标准C的许多重要方式。这是考虑您遇到的一些问题以及哪些问题可能适用于使用CUDA C的并行实现的绝佳时机。随着我们的进步，我们将介绍可用于在GPU上完成任务的其他一些功能，以及CUDA为我们提供的一些更高级的API功能。</p>
+<h3 id="9-2-Compute-Capability"><a href="#9-2-Compute-Capability" class="headerlink" title="9.2 Compute Capability"></a>9.2 Compute Capability</h3><p>计算能力是指NVIDIA GPU所支持的功能集。</p>
+<h4 id="9-2-1-NVIDIA-GPU计算能力"><a href="#9-2-1-NVIDIA-GPU计算能力" class="headerlink" title="9.2.1 NVIDIA GPU计算能力"></a>9.2.1 NVIDIA GPU计算能力</h4><p>截至发稿时，NVIDIA GPU可能支持1.0,1.1,1.2,1.3或2.0的计算能力。功能较高的版本代表它们下面版本的超集，实现了“分层洋葱”或“俄罗斯嵌套玩偶”层次结构（取决于您的隐喻偏好）。例如，具有计算能力1.2的GPU支持计算能力1.0和1.1的所有功能。NVIDIA CUDA编程指南包含所有支持CUDA的GPU及其相应计算功能的最新列表。书中表9.1列出了截至发稿时可用的NVIDIA GPU。每个GPU支持的计算能力列在设备名称旁边。</p>
+<p>原子操作功能仅在计算能力1.1及之后的卡上支持，进一步，共享内存的原子操作只在计算能力1.2及之后的卡上支持。</p>
+<h4 id="9-2-2-Compiling-for-A-Minimum-Compute-Capability"><a href="#9-2-2-Compiling-for-A-Minimum-Compute-Capability" class="headerlink" title="9.2.2 Compiling for  A Minimum Compute Capability"></a>9.2.2 Compiling for  A Minimum Compute Capability</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc -arch=sm_11</span><br></pre></td></tr></table></figure>
+<p>cuda编译器指定最低的计算能力，通过-arch选项。</p>
+<h3 id="9-3-原子操作概述"><a href="#9-3-原子操作概述" class="headerlink" title="9.3 原子操作概述"></a>9.3 原子操作概述</h3><p>通常编写传统单线程应用时没有必要使用原子操作。为了讲清楚原子操作，以一个C或C++语句为例，自增操作符：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x++;</span><br></pre></td></tr></table></figure>
+<p>这是一条标准C的语句，该语句运行后，变量x的值比原来大1。实现这一效果的步骤呢，如下：</p>
+<ol>
+<li>读取x的值</li>
+<li>将读取的值+1</li>
+<li>将结果写会x</li>
+</ol>
+<p>有时，这个过程通常被称作读-修改-写（read-modify-write）操作。多线程执行结果与执行顺序相关的例子略。例子证明多线程在操作共享数据时，可能出现潜在的未预期结果。所以我们需要一种手段保证读-修改-写操作不被其他线程打断，在这种情况下，我们称这个操作是原子的。</p>
+<h3 id="9-4-计算直方图"><a href="#9-4-计算直方图" class="headerlink" title="9.4 计算直方图"></a>9.4 计算直方图</h3><p>何为计算直方图：给定由一组元素组成的数据集，直方图表示每个元素的频率计数。尽管描述和理解简单，但计算机科学中经常出现计算数据直方图。它用于图像处理，数据压缩，计算机视觉，机器学习，音频编码等算法。我们将使用直方图计算作为以下代码示例的算法。</p>
+<h4 id="9-4-1-CPU直方图计算"><a href="#9-4-1-CPU直方图计算" class="headerlink" title="9.4.1 CPU直方图计算"></a>9.4.1 CPU直方图计算</h4><p>我们现在举例说明如何在CPU上计算直方图。在实际情况中，应用处理的数据一般是大量的数据流，但是在我们的简单应用中，我们使用随机生成的字节流代替。在例子程序中，将会生成100MB的随机数据。</p>
+<p>单线程中程序很简单！</p>
+<h4 id="9-4-2-GPU直方图计算"><a href="#9-4-2-GPU直方图计算" class="headerlink" title="9.4.2 GPU直方图计算"></a>9.4.2 GPU直方图计算</h4><p>这时可能多个线程需要对同一项的个数进行加1，这时就需要原子操作。</p>
+<p>最优的运行时参数如何得出？</p>
+<p><strong>使用全局内存原子操作</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">atomicAdd(&amp;histo[buffer[i]], <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>大量原子访存，导致访问序列化，导致性能下降。</p>
+<p><strong>使用共享全局内存原子操作</strong></p>
+<p>在第一阶段，每个并行块将计算生一个的单独直方图。由于每个模块独立完成，我们可以在共享存储器中计算这些直方图，从而节省了将每个write-off芯片发送到DRAM的时间。但是，这样做并不能使我们不需要原子操作，因为块中的多个线程仍然可以检查具有相同值的数据元素。但是，现在只有256个线程竞争256个地址的事实将减少数千个线程竞争的全局版本的争用。</p>
+<p>我们修改后的直方图示例的最后一步要求我们将每个块的临时直方图合并到全局缓冲区<code>histo []</code>中。假设我们将输入分成两半，两个线程查看不同的一半并计算单独的直方图。如果线程A在输入中看到字节0xFC 20次并且线程B看到字节0xFC 5次，则字节0xFC必须在输入中出现25次。同样地，最终直方图的每个区间仅是线程A的直方图和线程B的直方图中的对应区间的总和。此逻辑扩展到任意数量的线程，因此将每个块的直方图合并为单个最终组织图包括将块的直方图中的每个条目添加到最终直方图中的相应条目。</p>
+<h3 id="9-5-本章小结"><a href="#9-5-本章小结" class="headerlink" title="9.5 本章小结"></a>9.5 本章小结</h3><p>略</p>
 
       
     </div>
@@ -470,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/note-cuda-by-example-4/" rel="next" title="CUDA BY EXAMPLE阅读笔记-4">
-                <i class="fa fa-chevron-left"></i> CUDA BY EXAMPLE阅读笔记-4
+              <a href="/2019/03/07/note-cuda-by-example-8/" rel="next" title="CUDA BY EXAMPLE阅读笔记-8">
+                <i class="fa fa-chevron-left"></i> CUDA BY EXAMPLE阅读笔记-8
               </a>
             
           </div>
@@ -479,10 +475,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/06/note-cuda-by-example-6/" rel="prev" title="CUDA BY EXAMPLE阅读笔记-6">
-                CUDA BY EXAMPLE阅读笔记-6 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第5章-线程协作（Thread-Cooperation）"><span class="nav-number">1.</span> <span class="nav-text">第5章 线程协作（Thread Cooperation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-拆分并行块"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 拆分并行块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-向量加法：终极版"><span class="nav-number">1.2.1.</span> <span class="nav-text">5.2.1 向量加法：终极版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-GPU-RIPPLE-USING-THREADS"><span class="nav-number">1.2.2.</span> <span class="nav-text">5.2.2 GPU RIPPLE USING THREADS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-共享内存和同步"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 共享内存和同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-点积（内积）"><span class="nav-number">1.3.1.</span> <span class="nav-text">5.3.1 点积（内积）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-SHARED-MEMORY-BITMAP"><span class="nav-number">1.3.2.</span> <span class="nav-text">5.3.2 SHARED MEMORY BITMAP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-本章小结"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 本章小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第9章-原子性"><span class="nav-number">1.</span> <span class="nav-text">第9章 原子性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">9.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-Compute-Capability"><span class="nav-number">1.2.</span> <span class="nav-text">9.2 Compute Capability</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-1-NVIDIA-GPU计算能力"><span class="nav-number">1.2.1.</span> <span class="nav-text">9.2.1 NVIDIA GPU计算能力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2-2-Compiling-for-A-Minimum-Compute-Capability"><span class="nav-number">1.2.2.</span> <span class="nav-text">9.2.2 Compiling for  A Minimum Compute Capability</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-原子操作概述"><span class="nav-number">1.3.</span> <span class="nav-text">9.3 原子操作概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-计算直方图"><span class="nav-number">1.4.</span> <span class="nav-text">9.4 计算直方图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-4-1-CPU直方图计算"><span class="nav-number">1.4.1.</span> <span class="nav-text">9.4.1 CPU直方图计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-4-2-GPU直方图计算"><span class="nav-number">1.4.2.</span> <span class="nav-text">9.4.2 GPU直方图计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-5-本章小结"><span class="nav-number">1.5.</span> <span class="nav-text">9.5 本章小结</span></a></li></ol></li></ol></div>
             
 
           </div>

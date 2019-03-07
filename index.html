@@ -311,6 +311,480 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/07/note-cuda-by-example-9/" class="post-title-link" itemprop="url">CUDA BY EXAMPLE阅读笔记-9</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-07 15:27:00 / Modified: 17:56:50" itemprop="dateCreated datePublished" datetime="2019-03-07T15:27:00+08:00">2019-03-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="第9章-原子性"><a href="#第9章-原子性" class="headerlink" title="第9章 原子性"></a>第9章 原子性</h2><p>在某些情况下，当我们尝试在大规模并行体系结构上实现相同的算法时，单线程应用程序中非常简单的东西实际上会出现严重问题。在本章中，我们将介绍一些需要使用特殊原语的情况，以便安全地完成在传统的单线程应用程序中可能非常简单的事情。</p>
+<h3 id="9-1-本章内容"><a href="#9-1-本章内容" class="headerlink" title="9.1 本章内容"></a>9.1 本章内容</h3><ul>
+<li>了解多个NVIDIA GPU的计算能力（compute capability）</li>
+<li>了解什么是原子操作和为什么需要他们</li>
+<li>了解如何在CUDA核函数中执行原子算术操作</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/07/note-cuda-by-example-9/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/07/note-cuda-by-example-8/" class="post-title-link" itemprop="url">CUDA BY EXAMPLE阅读笔记-8</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-07 09:17:00 / Modified: 15:28:31" itemprop="dateCreated datePublished" datetime="2019-03-07T09:17:00+08:00">2019-03-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="第8章-图形交互性"><a href="#第8章-图形交互性" class="headerlink" title="第8章 图形交互性"></a>第8章 图形交互性</h2><p>通用计算和渲染模式之间的这种交互是能够的，而且根据您已经知道的内容，它很容易实现。CUDA C应用程序可以与两种最流行的实时渲染API（OpenGL和DirectX）无缝地互操作。本章将介绍启用此功能的机制。</p>
+<h3 id="8-1-本章内容"><a href="#8-1-本章内容" class="headerlink" title="8.1 本章内容"></a>8.1 本章内容</h3><ul>
+<li>了解图形交互性和为什么我们使用它</li>
+<li>了解如何为图形交互设置CUDA设备</li>
+<li>了解如何在CUDA核函数和OpenGL渲染之间共享数据</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/07/note-cuda-by-example-8/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/06/note-cuda-by-example-7/" class="post-title-link" itemprop="url">CUDA BY EXAMPLE阅读笔记-7</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-06 18:07:00" itemprop="dateCreated datePublished" datetime="2019-03-06T18:07:00+08:00">2019-03-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-07 15:19:26" itemprop="dateModified" datetime="2019-03-07T15:19:26+08:00">2019-03-07</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="第7章-纹理内存"><a href="#第7章-纹理内存" class="headerlink" title="第7章 纹理内存"></a>第7章 纹理内存</h2><p>在本章中，我们将学习如何分配和使用纹理内存。与常量内存一样，纹理内存是另一种只读内存，可以在读取具有某些访问模式时提高性能并减少内存流量。尽管纹理内存最初是为传统图形应用程序设计的，但它也可以在某些GPU计算应用程序中非常有效地使用。</p>
+<h3 id="7-1-本章内容"><a href="#7-1-本章内容" class="headerlink" title="7.1 本章内容"></a>7.1 本章内容</h3><ul>
+<li>了解纹理内存的性能特性</li>
+<li>了解如何使用CUDA C一维纹理内存</li>
+<li>了解如何使用CUDA C二维纹理内存</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/06/note-cuda-by-example-7/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -663,7 +1137,7 @@
                 
               
 
-              <time title="Created: 2019-03-05 10:07:00" itemprop="dateCreated datePublished" datetime="2019-03-05T10:07:00+08:00">2019-03-05</time>
+              <time title="Created: 2019-03-05 10:17:00" itemprop="dateCreated datePublished" datetime="2019-03-05T10:17:00+08:00">2019-03-05</time>
             
 
             
@@ -680,7 +1154,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-06 13:22:52" itemprop="dateModified" datetime="2019-03-06T13:22:52+08:00">2019-03-06</time>
+                <time title="Modified: 2019-03-07 18:13:27" itemprop="dateModified" datetime="2019-03-07T18:13:27+08:00">2019-03-07</time>
               
             
           </span>
@@ -768,6 +1242,503 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/05/note-cuda-by-example-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/05/note-cuda-by-example-3/" class="post-title-link" itemprop="url">CUDA BY EXAMPLE阅读笔记-3</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-05 10:07:00" itemprop="dateCreated datePublished" datetime="2019-03-05T10:07:00+08:00">2019-03-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-06 13:27:06" itemprop="dateModified" datetime="2019-03-06T13:27:06+08:00">2019-03-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="第3章-CUDA-C介绍"><a href="#第3章-CUDA-C介绍" class="headerlink" title="第3章 CUDA C介绍"></a>第3章 CUDA C介绍</h2><h3 id="3-1-本章内容"><a href="#3-1-本章内容" class="headerlink" title="3.1 本章内容"></a>3.1 本章内容</h3><ul>
+<li>你将写下你的第一行CUDA C代码</li>
+<li>你将了解到为主机端写的代码和为设备端写的代码的区别</li>
+<li>你将学习到如何从主机端运行设备端代码(how to run device code from the host)</li>
+<li>你将学习CUDA设备的设备内存的使用方式</li>
+<li>你将学习如何查询CUDA设备的相关状态信息</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/05/note-cuda-by-example-3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/04/note-cuda-by-example-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/04/note-cuda-by-example-2/" class="post-title-link" itemprop="url">CUDA BY EXAMPLE阅读笔记-2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-04 10:07:00" itemprop="dateCreated datePublished" datetime="2019-03-04T10:07:00+08:00">2019-03-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-06 13:27:03" itemprop="dateModified" datetime="2019-03-06T13:27:03+08:00">2019-03-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="第2章-现在开始"><a href="#第2章-现在开始" class="headerlink" title="第2章 现在开始"></a>第2章 现在开始</h2><h3 id="2-1-本章内容"><a href="#2-1-本章内容" class="headerlink" title="2.1 本章内容"></a>2.1 本章内容</h3><ul>
+<li>下载本章需要的所有软件</li>
+<li>搭建CUDA C程序编译运行的环境</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/04/note-cuda-by-example-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/04/note-cuda-by-example-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/04/note-cuda-by-example-1/" class="post-title-link" itemprop="url">CUDA BY EXAMPLE阅读笔记-1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-04 10:07:00" itemprop="dateCreated datePublished" datetime="2019-03-04T10:07:00+08:00">2019-03-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-06 13:27:13" itemprop="dateModified" datetime="2019-03-06T13:27:13+08:00">2019-03-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="第1章-Why-CUDA-Why-Now"><a href="#第1章-Why-CUDA-Why-Now" class="headerlink" title="第1章 Why CUDA? Why Now?"></a>第1章 Why CUDA? Why Now?</h2><p>这篇介绍性的章节将研究硬件的最新趋势，这些趋势对我们作为程序员编写的软件起了很大的作用。</p>
+<h3 id="1-1-章节主要内容"><a href="#1-1-章节主要内容" class="headerlink" title="1.1 章节主要内容"></a>1.1 章节主要内容</h3><ul>
+<li>学习了解并行计算愈加重要作用</li>
+<li>学习了解GPU计算的简要历史和CUDA</li>
+<li>学习了解一些采用CUDA C编写的成功应用</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/04/note-cuda-by-example-1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -810,7 +1781,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1012,6 +1983,18 @@
     
       
         
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
       
     
       

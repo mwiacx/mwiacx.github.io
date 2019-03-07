@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+  <meta name="description" content="第1章 Why CUDA? Why Now?这篇介绍性的章节将研究硬件的最新趋势，这些趋势对我们作为程序员编写的软件起了很大的作用。 1.1 章节主要内容 学习了解并行计算愈加重要作用 学习了解GPU计算的简要历史和CUDA 学习了解一些采用CUDA C编写的成功应用">
 <meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-5">
-<meta property="og:url" content="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/index.html">
+<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-1">
+<meta property="og:url" content="http://code.mwiacx.com/2019/03/04/note-cuda-by-example-1/index.html">
 <meta property="og:site_name" content="秋起冬落">
-<meta property="og:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta property="og:description" content="第1章 Why CUDA? Why Now?这篇介绍性的章节将研究硬件的最新趋势，这些趋势对我们作为程序员编写的软件起了很大的作用。 1.1 章节主要内容 学习了解并行计算愈加重要作用 学习了解GPU计算的简要历史和CUDA 学习了解一些采用CUDA C编写的成功应用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-03-06T05:24:43.339Z">
+<meta property="og:updated_time" content="2019-03-06T05:27:13.106Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-5">
-<meta name="twitter:description" content="第5章 线程协作（Thread Cooperation）5.1 本章内容 You will learn about what CUDA C calls threads??? 了解不同线程之间进行通信的机制 了解不同线程并行运行的同步机制">
+<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-1">
+<meta name="twitter:description" content="第1章 Why CUDA? Why Now?这篇介绍性的章节将研究硬件的最新趋势，这些趋势对我们作为程序员编写的软件起了很大的作用。 1.1 章节主要内容 学习了解并行计算愈加重要作用 学习了解GPU计算的简要历史和CUDA 学习了解一些采用CUDA C编写的成功应用">
 
 
 
 
 
 
-  <link rel="canonical" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/">
+  <link rel="canonical" href="http://code.mwiacx.com/2019/03/04/note-cuda-by-example-1/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>CUDA BY EXAMPLE阅读笔记-5 | 秋起冬落</title>
+  <title>CUDA BY EXAMPLE阅读笔记-1 | 秋起冬落</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-5/">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/04/note-cuda-by-example-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Xun">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-5
+          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-1
 
               
             
@@ -358,12 +358,24 @@
                 
               
 
-              <time title="Created: 2019-03-06 10:07:00 / Modified: 13:24:43" itemprop="dateCreated datePublished" datetime="2019-03-06T10:07:00+08:00">2019-03-06</time>
+              <time title="Created: 2019-03-04 10:07:00" itemprop="dateCreated datePublished" datetime="2019-03-04T10:07:00+08:00">2019-03-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-06 13:27:13" itemprop="dateModified" datetime="2019-03-06T13:27:13+08:00">2019-03-06</time>
               
             
           </span>
@@ -397,43 +409,30 @@
       
 
       
-        <h2 id="第5章-线程协作（Thread-Cooperation）"><a href="#第5章-线程协作（Thread-Cooperation）" class="headerlink" title="第5章 线程协作（Thread Cooperation）"></a>第5章 线程协作（Thread Cooperation）</h2><h3 id="5-1-本章内容"><a href="#5-1-本章内容" class="headerlink" title="5.1 本章内容"></a>5.1 本章内容</h3><ul>
-<li>You will learn about what CUDA C calls threads???</li>
-<li>了解不同线程之间进行通信的机制</li>
-<li>了解不同线程并行运行的同步机制</li>
+        <h2 id="第1章-Why-CUDA-Why-Now"><a href="#第1章-Why-CUDA-Why-Now" class="headerlink" title="第1章 Why CUDA? Why Now?"></a>第1章 Why CUDA? Why Now?</h2><p>这篇介绍性的章节将研究硬件的最新趋势，这些趋势对我们作为程序员编写的软件起了很大的作用。</p>
+<h3 id="1-1-章节主要内容"><a href="#1-1-章节主要内容" class="headerlink" title="1.1 章节主要内容"></a>1.1 章节主要内容</h3><ul>
+<li>学习了解并行计算愈加重要作用</li>
+<li>学习了解GPU计算的简要历史和CUDA</li>
+<li>学习了解一些采用CUDA C编写的成功应用</li>
 </ul>
 <a id="more"></a>
-<h3 id="5-2-拆分并行块"><a href="#5-2-拆分并行块" class="headerlink" title="5.2 拆分并行块"></a>5.2 拆分并行块</h3><p>上一章中介绍了CUDA运行时系统将多个并行副本发射到GPU上，这些并行副本被称为blocks。</p>
-<p>之前我们只更改了&lt;&lt;&lt;&gt;&gt;&gt;中的前一个参数，后一个参数表示每个块包含的线程数，在之前的例子中，我们实际上发射了：</p>
-<script type="math/tex; mode=display">N\ blocks \times 1\ thread/block = N\ parallel\ threads ​</script><p>让我们重新审视我们的向量加法示例，介绍包含有关CUDA C功能的新信息。</p>
-<h4 id="5-2-1-向量加法：终极版"><a href="#5-2-1-向量加法：终极版" class="headerlink" title="5.2.1 向量加法：终极版"></a>5.2.1 向量加法：终极版</h4><p>问题与目标同前面，不同的是这次不使用block而是使用thread。使用并行线程有一些使用并行block得不到的好处，但现在还不是揭露他的时候。</p>
-<p>GPU VECTOR SUMS USING THREADS：代码略</p>
-<p>在下一节中，我们将看到只用线程的一个局限性，当然，我们也会知道为什么要将block拆分为threads。</p>
-<p>GPU SUMS OF A LONGER VECTOR：代码略</p>
-<p>与block数类似，每个块的线程数也有限制，其不能大于设备属性中maxThreadPerBlock字段指定的值。</p>
-<p>注意如何在多维结构中计算线性编号。分配块和每块线程数时需要注意ROUND UP。如果需要发射的线程数不是threadsPerBlocks的整数倍需要进行向上取整，这时候有可能多分配一些线程，需要保证这些线程不会进行多余的操作，这就是下面代码if语句存在的原因：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tid &lt; N)</span><br><span class="line">	c[tid] = b[tid] + a[tid];</span><br></pre></td></tr></table></figure>
-<p>GPU SUMS OF ARBITRARILY LONG VECTORS：代码略</p>
-<p>如何处理超大线程数面临的块数和块上线程数限制，方法：每个线程顺序处理多个数据，而非一个数据，这样就能把总线程数降下来。</p>
-<p>这样我们可以添加任意长度的向量，只受GPU上RAM大小的限制。</p>
-<h4 id="5-2-2-GPU-RIPPLE-USING-THREADS"><a href="#5-2-2-GPU-RIPPLE-USING-THREADS" class="headerlink" title="5.2.2 GPU RIPPLE USING THREADS"></a>5.2.2 GPU RIPPLE USING THREADS</h4><p>一个新的有趣的例子，略。<strong>重点内容是如何计算线性坐标！</strong></p>
-<h3 id="5-3-共享内存和同步"><a href="#5-3-共享内存和同步" class="headerlink" title="5.3 共享内存和同步"></a>5.3 共享内存和同步</h3><p>到目前为止，将块拆成线程的动机只有降低硬件对于块的数量限制，这是非常弱的动机。更重要的一个因素是<strong>共享内存</strong>！在CUDA C中使用关键字<code>__shared__</code>可以使得变量驻留在共享内存中。与典型的共享内存不一样的是，<strong>CUDA C为每一个块创建共享内存变量的副本</strong>。块中的线程共享内存，但线程无法查看和修改其他块中此变量副本，<strong>通过这种方法，块中的线程可以在计算上进行通信和协作</strong>。此外，共享内存缓冲区实际上驻留在GPU上，而不是驻留在片外DRAM中。这样访问共享内存的延迟往往远低于典型缓冲区，使共享内存有效地作为每块，软件管理的缓存或暂存器。</p>
-<p>既然有通信机制，随之而来就是同步机制。</p>
-<h4 id="5-3-1-点积（内积）"><a href="#5-3-1-点积（内积）" class="headerlink" title="5.3.1 点积（内积）"></a>5.3.1 点积（内积）</h4><p>两个向量的内积公式定义如下：</p>
-<script type="math/tex; mode=display">(x_1,x_2,x_3,x_4) \cdot (y_1, y_2, y_3, y_4) = x_1y_1 + x_2y_2 + x_3y_3 + x_4y_4</script><p>代码从略，<strong>请务必</strong>对照原书理解代码和并行编程方法。</p>
-<p>将一个变量声明成驻留共享内存的方式如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__shared__ <span class="keyword">float</span> cache[threadsPerBlock];</span><br></pre></td></tr></table></figure>
-<p>同步的方法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// synchronize threads in this block</span></span><br><span class="line">__syncthreads();</span><br></pre></td></tr></table></figure>
-<p>这个调用保证block上的每个线程都已经完成这个指令后，才会执行之后的指令。</p>
-<p><strong>归约（Reduction）</strong>：通常将获取一个输入数组并对其进行一些操作，最后产生一个小一些的数组的过程称作归约。</p>
-<p>核函数总的计算时间复杂度：$1+log_2(blockDim.x)+1$。</p>
-<p>在核函数中只计算了部分步骤的原因：Reduction类操作的最后阶段往往不能很好的利用GPU的并行计算优势，不如交给CPU计算。</p>
-<p>重要提醒：</p>
-<p><strong>如果将__syncthreads()写入了divergent branch，那么程序会造成死锁</strong></p>
-<h4 id="5-3-2-SHARED-MEMORY-BITMAP"><a href="#5-3-2-SHARED-MEMORY-BITMAP" class="headerlink" title="5.3.2 SHARED MEMORY BITMAP"></a>5.3.2 SHARED MEMORY BITMAP</h4><p>合适的使用<code>__syncthreads()</code>进行线程同步。</p>
-<h3 id="5-4-本章小结"><a href="#5-4-本章小结" class="headerlink" title="5.4 本章小结"></a>5.4 本章小结</h3><p>我们知道如何将块细分为更小的并行执行单元（称为线程）。我们重新讨论了前一章的向量加法示例，以了解如何执行任意长向量的添加。我们还展示了一个Reduction的例子，以及我们如何使用共享内存和同步来实现这一目标。事实上，这个例子展示了GPU和CPU如何协作计算结果。最后，我们展示了当我们忽略同步需求时它对应用程序的危险程度。</p>
-<p>您已经了解了CUDA C的大部分基础知识以及它类似于标准C的一些方法，以及它与标准C的许多重要方式。这是考虑您遇到的一些问题以及哪些问题可能适用于使用CUDA C的并行实现的绝佳时机。随着我们的进步，我们将介绍可用于在GPU上完成任务的其他一些功能，以及CUDA为我们提供的一些更高级的API功能。</p>
+<h3 id="1-2-并行计算的年代"><a href="#1-2-并行计算的年代" class="headerlink" title="1.2 并行计算的年代"></a>1.2 并行计算的年代</h3><p>并行计算在现在这个年代已经无所不在了。</p>
+<h4 id="1-2-1-核心处理单元"><a href="#1-2-1-核心处理单元" class="headerlink" title="1.2.1 核心处理单元"></a>1.2.1 核心处理单元</h4><p>过去30年，CPU的主频得到了巨大的提升，计算机的性能得到了巨大的提升。功耗墙迫使研究人员重新考虑提高主频来提高计算性能的方式。在另外一个领域，超算领域，研究人员通过使成千上万的CPU协同工作来得到更为强大的多的性能。同样的，超算领域的方法也为个人计算领域带来了变革，多核时代来临。</p>
+<h3 id="1-3-GPU计算的提升"><a href="#1-3-GPU计算的提升" class="headerlink" title="1.3 GPU计算的提升"></a>1.3 GPU计算的提升</h3><p>GPU通用计算变得更加热门和实用。</p>
+<h4 id="1-3-1-GPUs简史"><a href="#1-3-1-GPUs简史" class="headerlink" title="1.3.1 GPUs简史"></a>1.3.1 GPUs简史</h4><p>图形操作系统促进了2D图形处理器的发展，大约在同一时间，在专业计算领域，一家名为Silicon Graphics的公司在20世纪80年代推广了在各种市场中使用三维图形，包括政府和国防应用以及科学和技术可视化。1992年，Silicon Graphics通过发布OpenGL库打开了其硬件的编程接口。Silicon Graphics希望OpenGL可用作编写3D图形应用程序的标准化，独立于平台的方法。</p>
+<p>到20世纪90年代中期，对采用3D图形的消费者应用的需求迅速升级，为两个相当重要的发展奠定了基础。首先，Doom，Duke Nukem 3D和Quake等沉浸式第一人称游戏的发布帮助点燃了为PC游戏创造逐步更逼真的3D环境的过程。与此同时，NVIDIA，ATI Technologies和3dfx Interactive等公司开始发布图形加速器，这些加速器价格实惠，足以引起广泛关注。</p>
+<p>NVIDIA GeForce 256的发布进一步推动了消费类图形硬件的功能。有史以来第一次，可以直接在图形处理器上执行变换和照明计算，从而增强了更具视觉趣味性应用的潜力。由于变换和照明已经成为OpenGL图形管道的组成部分，因此GeForce 256标志着自然发展的开始，越来越多的图形管道将直接在图形处理器上实现。</p>
+<p>从并行计算的角度来看，NVIDIA在2001年发布的GeForce 3系列可以说是GPU技术中最重要的突破。GeForce 3系列是计算行业第一款实现微软当时新版DirectX 8.0标准的芯片。该标准要求兼容硬件包含可编程顶点和可编程像素着色阶段。开发人员第一次可以控制将在其GPU上执行的确切计算。</p>
+<h4 id="1-3-2-早期GPU计算"><a href="#1-3-2-早期GPU计算" class="headerlink" title="1.3.2 早期GPU计算"></a>1.3.2 早期GPU计算</h4><p>GPU计算早期的一般方法非常复杂。由于OpenGL和DirectX等标准图形API仍然是与GPU交互的唯一方式，因此任何在GPU上执行任意计算的尝试仍然会受到图形API内编程的限制。</p>
+<p>本质上，GPU被欺骗执行非渲染任务，使这些任务看起来好像是标准渲染。这个技巧非常聪明，但也非常复杂。</p>
+<p>然而GPU计算也存在很大的缺陷，编程模型对任何临界质量的开发人员的形成仍然过于严格。存在严格的资源限制，因为程序只能从少数输入颜色和少量纹理单元接收输入数据。程序员如何以及在何处将结果写入内存存在严重的限制，因此需要能够写入内存中任意位置（散射）的算法无法在GPU上运行。此外，几乎不可能预测您的特定GPU如何处理浮点数据，如果它根本处理浮点数据，那么大多数科学计算将无法使用GPU。最后，当程序不可避免地计算出不正确的结果，无法终止或者只是挂起机器时，没有合理的方法来调试在GPU上执行的任何代码。</p>
+<p>更要命的是，当时的GPU编程需要开发人员具有图形编程语言的基础。</p>
+<h3 id="1-4-CUDA"><a href="#1-4-CUDA" class="headerlink" title="1.4 CUDA"></a>1.4 CUDA</h3><p>2006年，NVIDIA发布了GeForce 8800GTX，第一款基于CUDA架构的显卡，该架构包括几个专为GPU计算而设计的新组件，旨在减轻许多限制，这些限制阻止了以前的图形处理器对通用计算的合法用途。</p>
+<h4 id="1-4-1-什么是CUDA架构"><a href="#1-4-1-什么是CUDA架构" class="headerlink" title="1.4.1 什么是CUDA架构"></a>1.4.1 什么是CUDA架构</h4><p>CUDA体系结构具有统一的着色器通道；芯片上的每一个计算单元都可以被程序员控制；计算单元符合IEEE关于单精度浮点计算的运算规范；针对通用计算的指令集，而非针对图形计算的指令集；允许对存储器的任意读写，允许对Shared Memory的访问。</p>
+<h4 id="1-4-2-使用CUDA架构"><a href="#1-4-2-使用CUDA架构" class="headerlink" title="1.4.2 使用CUDA架构"></a>1.4.2 使用CUDA架构</h4><p>为了解决通用GPU计算的编程问题，NVIDIA在标准C的基础上扩展发布了CUDA C标准。在GeForce 8800 GTX推出几个月后，NVIDIA公开了这种语言的编译器。 通过这种方式，CUDA C成为GPU公司专门设计的第一种语言，用于促进GPU上的通用计算。</p>
+<h3 id="1-5-CUDA应用"><a href="#1-5-CUDA应用" class="headerlink" title="1.5 CUDA应用"></a>1.5 CUDA应用</h3><h4 id="1-5-1-医学影像"><a href="#1-5-1-医学影像" class="headerlink" title="1.5.1 医学影像"></a>1.5.1 医学影像</h4><p>提供了计算能力</p>
+<h4 id="1-5-2-流体动力学"><a href="#1-5-2-流体动力学" class="headerlink" title="1.5.2 流体动力学"></a>1.5.2 流体动力学</h4><p>任务的契合性</p>
+<h4 id="1-5-3-环境科学"><a href="#1-5-3-环境科学" class="headerlink" title="1.5.3 环境科学"></a>1.5.3 环境科学</h4><p>分子模拟，测试全面，性能好。</p>
 
       
     </div>
@@ -470,18 +469,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/note-cuda-by-example-4/" rel="next" title="CUDA BY EXAMPLE阅读笔记-4">
-                <i class="fa fa-chevron-left"></i> CUDA BY EXAMPLE阅读笔记-4
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/06/note-cuda-by-example-6/" rel="prev" title="CUDA BY EXAMPLE阅读笔记-6">
-                CUDA BY EXAMPLE阅读笔记-6 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/04/note-cuda-by-example-2/" rel="prev" title="CUDA BY EXAMPLE阅读笔记-2">
+                CUDA BY EXAMPLE阅读笔记-2 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -604,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第5章-线程协作（Thread-Cooperation）"><span class="nav-number">1.</span> <span class="nav-text">第5章 线程协作（Thread Cooperation）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-拆分并行块"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 拆分并行块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-向量加法：终极版"><span class="nav-number">1.2.1.</span> <span class="nav-text">5.2.1 向量加法：终极版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-GPU-RIPPLE-USING-THREADS"><span class="nav-number">1.2.2.</span> <span class="nav-text">5.2.2 GPU RIPPLE USING THREADS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-共享内存和同步"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 共享内存和同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-点积（内积）"><span class="nav-number">1.3.1.</span> <span class="nav-text">5.3.1 点积（内积）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-SHARED-MEMORY-BITMAP"><span class="nav-number">1.3.2.</span> <span class="nav-text">5.3.2 SHARED MEMORY BITMAP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-本章小结"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 本章小结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第1章-Why-CUDA-Why-Now"><span class="nav-number">1.</span> <span class="nav-text">第1章 Why CUDA? Why Now?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-章节主要内容"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 章节主要内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-并行计算的年代"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 并行计算的年代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-核心处理单元"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 核心处理单元</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-GPU计算的提升"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 GPU计算的提升</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-1-GPUs简史"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.3.1 GPUs简史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-2-早期GPU计算"><span class="nav-number">1.3.2.</span> <span class="nav-text">1.3.2 早期GPU计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-CUDA"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 CUDA</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-什么是CUDA架构"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.4.1 什么是CUDA架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-使用CUDA架构"><span class="nav-number">1.4.2.</span> <span class="nav-text">1.4.2 使用CUDA架构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-CUDA应用"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 CUDA应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-医学影像"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.5.1 医学影像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-2-流体动力学"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.5.2 流体动力学</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-3-环境科学"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.5.3 环境科学</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -96,20 +96,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="秋起冬落">
-<meta property="og:url" content="http://code.mwiacx.com/archives/2019/03/index.html">
+  <meta name="description" content="第8章 图形交互性通用计算和渲染模式之间的这种交互是能够的，而且根据您已经知道的内容，它很容易实现。CUDA C应用程序可以与两种最流行的实时渲染API（OpenGL和DirectX）无缝地互操作。本章将介绍启用此功能的机制。 8.1 本章内容 了解图形交互性和为什么我们使用它 了解如何为图形交互设置CUDA设备 了解如何在CUDA核函数和OpenGL渲染之间共享数据">
+<meta name="keywords" content="CUDA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-8">
+<meta property="og:url" content="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-8/index.html">
 <meta property="og:site_name" content="秋起冬落">
+<meta property="og:description" content="第8章 图形交互性通用计算和渲染模式之间的这种交互是能够的，而且根据您已经知道的内容，它很容易实现。CUDA C应用程序可以与两种最流行的实时渲染API（OpenGL和DirectX）无缝地互操作。本章将介绍启用此功能的机制。 8.1 本章内容 了解图形交互性和为什么我们使用它 了解如何为图形交互设置CUDA设备 了解如何在CUDA核函数和OpenGL渲染之间共享数据">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2019-03-07T07:28:31.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="秋起冬落">
+<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-8">
+<meta name="twitter:description" content="第8章 图形交互性通用计算和渲染模式之间的这种交互是能够的，而且根据您已经知道的内容，它很容易实现。CUDA C应用程序可以与两种最流行的实时渲染API（OpenGL和DirectX）无缝地互操作。本章将介绍启用此功能的机制。 8.1 本章内容 了解图形交互性和为什么我们使用它 了解如何为图形交互设置CUDA设备 了解如何在CUDA核函数和OpenGL渲染之间共享数据">
 
 
 
 
 
 
-  <link rel="canonical" href="http://code.mwiacx.com/archives/2019/03/">
+  <link rel="canonical" href="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-8/">
 
 
 
@@ -119,7 +124,7 @@
   };
 </script>
 
-  <title>Archive | 秋起冬落</title>
+  <title>CUDA BY EXAMPLE阅读笔记-8 | 秋起冬落</title>
   
 
 
@@ -167,7 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,7 +244,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -290,378 +295,189 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/07/note-cuda-by-example-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Xun">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="秋起冬落">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-8
+
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-07 09:17:00 / Modified: 15:28:31" itemprop="dateCreated datePublished" datetime="2019-03-07T09:17:00+08:00">2019-03-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        Um..! 9 posts in total. Keep on posting.
-      </span>
-      
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/07/note-cuda-by-example-9/" itemprop="url">
             
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-9</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-07T15:27:00+08:00" content="2019-03-07">
-          03-07
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
 
+          
 
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/07/note-cuda-by-example-8/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-8</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-07T09:17:00+08:00" content="2019-03-07">
-          03-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/06/note-cuda-by-example-7/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-7</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-06T18:07:00+08:00" content="2019-03-06">
-          03-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="第8章-图形交互性"><a href="#第8章-图形交互性" class="headerlink" title="第8章 图形交互性"></a>第8章 图形交互性</h2><p>通用计算和渲染模式之间的这种交互是能够的，而且根据您已经知道的内容，它很容易实现。CUDA C应用程序可以与两种最流行的实时渲染API（OpenGL和DirectX）无缝地互操作。本章将介绍启用此功能的机制。</p>
+<h3 id="8-1-本章内容"><a href="#8-1-本章内容" class="headerlink" title="8.1 本章内容"></a>8.1 本章内容</h3><ul>
+<li>了解图形交互性和为什么我们使用它</li>
+<li>了解如何为图形交互设置CUDA设备</li>
+<li>了解如何在CUDA核函数和OpenGL渲染之间共享数据</li>
+</ul>
+<a id="more"></a>
+<p>大量图形学知识，略过！</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/06/note-cuda-by-example-6/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-6</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-06T11:07:00+08:00" content="2019-03-06">
-          03-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/06/note-cuda-by-example-5/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-5</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-06T10:07:00+08:00" content="2019-03-06">
-          03-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/05/note-cuda-by-example-4/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-4</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-05T10:17:00+08:00" content="2019-03-05">
-          03-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/05/note-cuda-by-example-3/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-3</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-05T10:07:00+08:00" content="2019-03-05">
-          03-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/04/note-cuda-by-example-2/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-2</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-04T10:07:00+08:00" content="2019-03-04">
-          03-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/03/04/note-cuda-by-example-1/" itemprop="url">
-            
-              <span itemprop="name">CUDA BY EXAMPLE阅读笔记-1</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-04T10:07:00+08:00" content="2019-03-04">
-          03-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CUDA/" rel="tag"># CUDA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/06/note-cuda-by-example-7/" rel="next" title="CUDA BY EXAMPLE阅读笔记-7">
+                <i class="fa fa-chevron-left"></i> CUDA BY EXAMPLE阅读笔记-7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/07/note-cuda-by-example-9/" rel="prev" title="CUDA BY EXAMPLE阅读笔记-9">
+                CUDA BY EXAMPLE阅读笔记-9 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -681,8 +497,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -739,6 +564,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第8章-图形交互性"><span class="nav-number">1.</span> <span class="nav-text">第8章 图形交互性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">8.1 本章内容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -870,6 +712,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -881,6 +727,8 @@
   
 
 
+  
+
 
   
 
@@ -897,6 +745,53 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+</style>
+
+    
   
 
 

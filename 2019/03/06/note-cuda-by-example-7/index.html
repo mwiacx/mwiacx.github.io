@@ -96,25 +96,25 @@
 
 
 
-  <meta name="description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码">
+  <meta name="description" content="第7章 纹理内存在本章中，我们将学习如何分配和使用纹理内存。与常量内存一样，纹理内存是另一种只读内存，可以在读取具有某些访问模式时提高性能并减少内存流量。尽管纹理内存最初是为传统图形应用程序设计的，但它也可以在某些GPU计算应用程序中非常有效地使用。 7.1 本章内容 了解纹理内存的性能特性 了解如何使用CUDA C一维纹理内存 了解如何使用CUDA C二维纹理内存">
 <meta name="keywords" content="CUDA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-4">
-<meta property="og:url" content="http://code.mwiacx.com/2019/03/05/note-cuda-by-example-4/index.html">
+<meta property="og:title" content="CUDA BY EXAMPLE阅读笔记-7">
+<meta property="og:url" content="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-7/index.html">
 <meta property="og:site_name" content="秋起冬落">
-<meta property="og:description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码">
+<meta property="og:description" content="第7章 纹理内存在本章中，我们将学习如何分配和使用纹理内存。与常量内存一样，纹理内存是另一种只读内存，可以在读取具有某些访问模式时提高性能并减少内存流量。尽管纹理内存最初是为传统图形应用程序设计的，但它也可以在某些GPU计算应用程序中非常有效地使用。 7.1 本章内容 了解纹理内存的性能特性 了解如何使用CUDA C一维纹理内存 了解如何使用CUDA C二维纹理内存">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2019-03-07T10:13:27.755Z">
+<meta property="og:updated_time" content="2019-03-07T07:19:26.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-4">
-<meta name="twitter:description" content="第4章 CUDA C并行编程这一章主要研究如何使用CUDA C在GPU上执行并行代码。 4.1 本章内容 学习CUDA暴露（expose）其并行性的一种基础的方式 编写第一份CUDA C并行代码">
+<meta name="twitter:title" content="CUDA BY EXAMPLE阅读笔记-7">
+<meta name="twitter:description" content="第7章 纹理内存在本章中，我们将学习如何分配和使用纹理内存。与常量内存一样，纹理内存是另一种只读内存，可以在读取具有某些访问模式时提高性能并减少内存流量。尽管纹理内存最初是为传统图形应用程序设计的，但它也可以在某些GPU计算应用程序中非常有效地使用。 7.1 本章内容 了解纹理内存的性能特性 了解如何使用CUDA C一维纹理内存 了解如何使用CUDA C二维纹理内存">
 
 
 
 
 
 
-  <link rel="canonical" href="http://code.mwiacx.com/2019/03/05/note-cuda-by-example-4/">
+  <link rel="canonical" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-7/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>CUDA BY EXAMPLE阅读笔记-4 | 秋起冬落</title>
+  <title>CUDA BY EXAMPLE阅读笔记-7 | 秋起冬落</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/05/note-cuda-by-example-4/">
+    <link itemprop="mainEntityOfPage" href="http://code.mwiacx.com/2019/03/06/note-cuda-by-example-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Xun">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-4
+          <h1 class="post-title" itemprop="name headline">CUDA BY EXAMPLE阅读笔记-7
 
               
             
@@ -358,7 +358,7 @@
                 
               
 
-              <time title="Created: 2019-03-05 10:17:00" itemprop="dateCreated datePublished" datetime="2019-03-05T10:17:00+08:00">2019-03-05</time>
+              <time title="Created: 2019-03-06 18:07:00" itemprop="dateCreated datePublished" datetime="2019-03-06T18:07:00+08:00">2019-03-06</time>
             
 
             
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-07 18:13:27" itemprop="dateModified" datetime="2019-03-07T18:13:27+08:00">2019-03-07</time>
+                <time title="Modified: 2019-03-07 15:19:26" itemprop="dateModified" datetime="2019-03-07T15:19:26+08:00">2019-03-07</time>
               
             
           </span>
@@ -409,30 +409,40 @@
       
 
       
-        <h2 id="第4章-CUDA-C并行编程"><a href="#第4章-CUDA-C并行编程" class="headerlink" title="第4章 CUDA C并行编程"></a>第4章 CUDA C并行编程</h2><p>这一章主要研究如何使用CUDA C在GPU上执行并行代码。</p>
-<h3 id="4-1-本章内容"><a href="#4-1-本章内容" class="headerlink" title="4.1 本章内容"></a>4.1 本章内容</h3><ul>
-<li>学习CUDA暴露（expose）其并行性的一种基础的方式</li>
-<li>编写第一份CUDA C并行代码</li>
+        <h2 id="第7章-纹理内存"><a href="#第7章-纹理内存" class="headerlink" title="第7章 纹理内存"></a>第7章 纹理内存</h2><p>在本章中，我们将学习如何分配和使用纹理内存。与常量内存一样，纹理内存是另一种只读内存，可以在读取具有某些访问模式时提高性能并减少内存流量。尽管纹理内存最初是为传统图形应用程序设计的，但它也可以在某些GPU计算应用程序中非常有效地使用。</p>
+<h3 id="7-1-本章内容"><a href="#7-1-本章内容" class="headerlink" title="7.1 本章内容"></a>7.1 本章内容</h3><ul>
+<li>了解纹理内存的性能特性</li>
+<li>了解如何使用CUDA C一维纹理内存</li>
+<li>了解如何使用CUDA C二维纹理内存</li>
 </ul>
 <a id="more"></a>
-<h3 id="4-2-CUDA并行编程"><a href="#4-2-CUDA并行编程" class="headerlink" title="4.2 CUDA并行编程"></a>4.2 CUDA并行编程</h3><p>本节描述基本的CUDA并行编程知识。</p>
-<h4 id="4-2-1-矢量求和"><a href="#4-2-1-矢量求和" class="headerlink" title="4.2.1 矢量求和"></a>4.2.1 矢量求和</h4><p>问题：<code>c[10] = a[10] + b[10]</code></p>
-<p>CPU 矢量求和：代码略</p>
-<p>10次加法，假设有2个核，Core 0执行奇数次的加法，Core 1执行偶数次的加法。</p>
-<p>GPU 矢量求和：</p>
-<p>核函数如下：代码略</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">__<span class="function">global__ <span class="keyword">void</span> <span class="title">add</span><span class="params">( <span class="keyword">int</span> *a, <span class="keyword">int</span> *b, <span class="keyword">int</span> *c )</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> tid = blockIdx.x; <span class="comment">// handle the data at this index if (tid &lt; N)</span></span><br><span class="line">    <span class="keyword">if</span> (tid &lt; N)</span><br><span class="line">        c[tid] = a[tid] + b[tid];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Call: add&lt;&lt;&lt;N,1&gt;&gt;&gt;(dev_a, dev_b, dev_c);</span></span><br></pre></td></tr></table></figure>
-<p>之前没有说明的CUDA运行时参数，其中N表示在N个block上运行核函数，1表示每个block上有1个thread。在运行时，变量<code>blockIdx.x</code>表示核函数实际上运行的block编号。<strong>需要注意的是发射的block数有上限65535。</strong></p>
-<p>附来自知乎的blog中对于runtime参数有进一步的解释，<a href="https://zhuanlan.zhihu.com/p/34587739" target="_blank" rel="noopener">网址</a>。</p>
-<p><strong>另外本文中大量使用<code>HANDLE_ERROR()</code>来进行错误检查，希望读者注意永远记得检查可能失败的操作，这会减少我们遭受痛苦的时间。</strong></p>
-<h4 id="4-2-2-一个有趣的例子"><a href="#4-2-2-一个有趣的例子" class="headerlink" title="4.2.2 一个有趣的例子"></a>4.2.2 一个有趣的例子</h4><p>一个Julia Set的例子，如何用CPU和GPU来计算模拟Julia Set。<strong>请认真阅读代码的每一行，不懂的对照NVIDIA官方编程手册，注意对比CPU与GPU的实现理解如何将串行代码并行化。</strong></p>
-<p>新的知识点，三种函数类型限定词如下：</p>
-<ul>
-<li><code>__global__</code>：在设备上运行，被host代码调用，返回值必须是void，不支持可变参数参数，不能成为类成员函数。注意用<code>__global__</code>定义的kernel是异步的，这意味着host不会等待kernel执行完就执行下一步。</li>
-<li><code>__device__</code>：在device上执行，单仅可以从device中调用，不可以和<code>__global__</code>同时用。</li>
-<li><code>__host__</code>：在host上执行，仅可以从host上调用，一般省略不写，不可以和<code>__global__</code>同时用，但可和<code>__device__</code>，此时函数会在device和host都编译。</li>
-</ul>
-<h3 id="4-3-总结"><a href="#4-3-总结" class="headerlink" title="4.3 总结"></a>4.3 总结</h3><p>略。</p>
+<h3 id="7-2-纹理内存概述"><a href="#7-2-纹理内存概述" class="headerlink" title="7.2 纹理内存概述"></a>7.2 纹理内存概述</h3><p>虽然NVIDIA为经典的OpenGL和DirectX渲染广岛设计了纹理单元，但是纹理内存也具有一些特性，使其对通用计算非常有用。与常量内存类似，纹理内存也可以缓存在片上，因此某些情况下，它也可以减少对片外DRAM的请求从而提供更高的有效带宽。具体而言，纹理缓存是为了图形应用设计，其访问模式变现出空间局部性。</p>
+<p>图略，算术上，四个内存区域地址并不连续，因此不会被典型的CPU缓存算法缓存在一起，但是，由于GPU纹理缓存旨在加速这种访问模式，因此在使用纹理内存时，可以看到性能提升。实际上，正如我们将要看到的那样，这种访问模式在通用计算中并不罕见。</p>
+<h3 id="7-3-模拟热传递"><a href="#7-3-模拟热传递" class="headerlink" title="7.3 模拟热传递"></a>7.3 模拟热传递</h3><p>由于许多物理模拟可以很容易地并行化，因此我们将在此示例中查看一个非常简单的模拟模型。</p>
+<h4 id="7-3-1-简单热模型"><a href="#7-3-1-简单热模型" class="headerlink" title="7.3.1 简单热模型"></a>7.3.1 简单热模型</h4><p>一个简单的二维热传递模型，一个长方形的房间被二维网格化，在其中我们将随机布置一些具有各种固定温度的“加热器”。给定一个长方形的网格和加热器的设置，我们将要模拟每个格子温度的变化。</p>
+<p>一个格子在单位时间的变化由下式给出：</p>
+<script type="math/tex; mode=display">T_{new} = T_{old} + \sum\limits_{neighbors} k \cdot (T_{neighbor}-T_{old})</script><p>其中，常量K表示热量传递的速率。进一步，我们只有上下左右四个“邻居”，式子可以进一步写成：</p>
+<script type="math/tex; mode=display">T_{new} = T_{old} + k \cdot ( T_{top} + T_{bottom} + T_{left} + T_{right} - 4 \cdot T_{old} )​</script><h4 id="7-3-2-计算温度变化"><a href="#7-3-2-计算温度变化" class="headerlink" title="7.3.2 计算温度变化"></a>7.3.2 计算温度变化</h4><p>计算温度变化的主要步骤如下：</p>
+<ol>
+<li>给定一写温度输入，这个输入表示恒定的加热器的温度，这些值将会覆盖对应网格的计算值，来保持加热器恒温，这部分拷贝在<code>copy_const_kernel()</code>中执行。</li>
+<li>给定网格的温度输入，根据前面的式子计算网格的温度输出，温度变化计算在<code>blend_kernel()</code>中执行。</li>
+<li>交换输入和输出缓冲为下次迭代做准备。步骤2的结果将会成为新的步骤1的输入。</li>
+</ol>
+<h4 id="7-3-3-模拟动画"><a href="#7-3-3-模拟动画" class="headerlink" title="7.3.3 模拟动画"></a>7.3.3 模拟动画</h4><p>略</p>
+<h4 id="7-3-4-使用纹理内存"><a href="#7-3-4-使用纹理内存" class="headerlink" title="7.3.4 使用纹理内存"></a>7.3.4 使用纹理内存</h4><p>声明变量为纹理引用（texture references）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">texture&lt;<span class="keyword">float</span>&gt; texConstSrc;</span><br></pre></td></tr></table></figure>
+<p>我们在声明了这些引用后，同样我们需要<code>cudaMalloc()</code>为其分配内存，此外我们还需要调用<code>cudaBindTexture()</code>来将引用绑定到内存缓冲区。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HANDLE_ERROR( cudaMalloc((<span class="keyword">void</span>*)&amp;data.dev_constSrc, imageSize));</span><br><span class="line">HANDLE_ERROR( cudaBindTexture( <span class="literal">NULL</span>, texConstSrc, data.dev_constSrc, imageSize));</span><br><span class="line"><span class="comment">//对应的有解绑操作</span></span><br><span class="line">cudaUnbindTexture( texConstSrc );</span><br></pre></td></tr></table></figure>
+<p>与全局内存不同的是，纹理引用必须声明为全局的，不能作为函数参数传递，并且需要专门的接口<code>text1Dfetch()</code>来读取内容。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = tex1Dfetch(texIn, top);</span><br><span class="line">t = tex1Dfetch(texOut, top);</span><br></pre></td></tr></table></figure>
+<h4 id="7-3-5-使用二维纹理内存"><a href="#7-3-5-使用二维纹理内存" class="headerlink" title="7.3.5 使用二维纹理内存"></a>7.3.5 使用二维纹理内存</h4><p>二维纹理引用声明：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">texture&lt;<span class="keyword">float</span>, <span class="number">2</span>&gt; texConstSrc</span><br></pre></td></tr></table></figure>
+<p>内存访问接口：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tex2D()</span><br></pre></td></tr></table></figure>
+<p>之前我们需要用四个偏移top, left, top, bottom，现在我们可以从x,y来对纹理寻址，另外我们不用担心边界溢出问题了。如果x,y坐标为负，<code>tex2D()</code>会返回0位置的值。绑定接口更变为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//首先创建channel format descriptor</span></span><br><span class="line">cudaChannelFormatDesc desc = cudaCreateChannelDesc&lt;<span class="keyword">float</span>&gt;();</span><br><span class="line">HANDLE_ERROR( cudaBindTexture2D( <span class="literal">NULL</span>, texConstSrc, data.dev_constSrc,</span><br><span class="line">				desc, DIM, DIM, <span class="keyword">sizeof</span>(<span class="keyword">float</span>)*DIM) );</span><br></pre></td></tr></table></figure>
+<h3 id="7-4-本章小结"><a href="#7-4-本章小结" class="headerlink" title="7.4 本章小结"></a>7.4 本章小结</h3><p>正如我们在上一章中看到的那样，常量内存，纹理内存的一些好处来自于片上缓存。这在我们的传热模拟等应用中尤其引人注目：与数据访问模式具有一定空间局部性的应用。我们看到了如何使用一维或二维纹理，两者都具有相似的性能特征。与块或网格形状一样，一维或二维纹理的选择在很大程度上是看怎么方便。由于当我们切换到二维纹理并且边界自动处理时代码变得更清晰，我们可能会提倡在我们的传热应用中使用2D纹理。但正如你所看到的，无论哪种方式都可行。</p>
+<p>如果我们利用纹理采样器可以自动执行的一些转换，例如将打包数据打包成单独的变量或将8位和16位整数转换为标准化浮点数，纹理存储器可以提供额外的加速。我们没有在热传递应用中探索这些功能，但它们可能对您有用。</p>
 
       
     </div>
@@ -469,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/05/note-cuda-by-example-3/" rel="next" title="CUDA BY EXAMPLE阅读笔记-3">
-                <i class="fa fa-chevron-left"></i> CUDA BY EXAMPLE阅读笔记-3
+              <a href="/2019/03/06/note-cuda-by-example-6/" rel="next" title="CUDA BY EXAMPLE阅读笔记-6">
+                <i class="fa fa-chevron-left"></i> CUDA BY EXAMPLE阅读笔记-6
               </a>
             
           </div>
@@ -479,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/06/note-cuda-by-example-5/" rel="prev" title="CUDA BY EXAMPLE阅读笔记-5">
-                CUDA BY EXAMPLE阅读笔记-5 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/07/note-cuda-by-example-8/" rel="prev" title="CUDA BY EXAMPLE阅读笔记-8">
+                CUDA BY EXAMPLE阅读笔记-8 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -603,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第4章-CUDA-C并行编程"><span class="nav-number">1.</span> <span class="nav-text">第4章 CUDA C并行编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">4.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-CUDA并行编程"><span class="nav-number">1.2.</span> <span class="nav-text">4.2 CUDA并行编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-矢量求和"><span class="nav-number">1.2.1.</span> <span class="nav-text">4.2.1 矢量求和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-一个有趣的例子"><span class="nav-number">1.2.2.</span> <span class="nav-text">4.2.2 一个有趣的例子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-总结"><span class="nav-number">1.3.</span> <span class="nav-text">4.3 总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第7章-纹理内存"><span class="nav-number">1.</span> <span class="nav-text">第7章 纹理内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-本章内容"><span class="nav-number">1.1.</span> <span class="nav-text">7.1 本章内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-纹理内存概述"><span class="nav-number">1.2.</span> <span class="nav-text">7.2 纹理内存概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-模拟热传递"><span class="nav-number">1.3.</span> <span class="nav-text">7.3 模拟热传递</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-1-简单热模型"><span class="nav-number">1.3.1.</span> <span class="nav-text">7.3.1 简单热模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-2-计算温度变化"><span class="nav-number">1.3.2.</span> <span class="nav-text">7.3.2 计算温度变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-3-模拟动画"><span class="nav-number">1.3.3.</span> <span class="nav-text">7.3.3 模拟动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-4-使用纹理内存"><span class="nav-number">1.3.4.</span> <span class="nav-text">7.3.4 使用纹理内存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-3-5-使用二维纹理内存"><span class="nav-number">1.3.5.</span> <span class="nav-text">7.3.5 使用二维纹理内存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-本章小结"><span class="nav-number">1.4.</span> <span class="nav-text">7.4 本章小结</span></a></li></ol></li></ol></div>
             
 
           </div>
